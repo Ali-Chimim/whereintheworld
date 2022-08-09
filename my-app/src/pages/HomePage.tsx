@@ -14,12 +14,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 const HomePage = () => {
   return (
     <Grid sx={{ width: "100vw", padding: "50px", margin: 0 }} container>
-      <Grid
-        item
-        sx={{ width: "100%" }}
-        display="flex"
-        justifyContent={"space-between"}
-      >
+      <Grid xs={12} item display="flex" justifyContent={"space-between"}>
         <SearchInput />
         <Button
           variant="contained"
