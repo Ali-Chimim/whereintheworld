@@ -1,36 +1,28 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  Grid,
-  InputLabel,
-  MenuItem,
-  Select,
-  Typography,
-} from "@mui/material";
+import { Grid } from "@mui/material";
+import FilterMenu from "../components/FilterMenu";
 import SearchInput from "../components/SearchInput";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const HomePage = () => {
   return (
-    <Grid sx={{ width: "100vw", padding: "50px", margin: 0 }} container>
-      <Grid xs={12} item display="flex" justifyContent={"space-between"}>
+    <Grid
+      sx={{
+        width: "100vw",
+        padding: { xs: "20px", md: "50px" },
+        margin: 0,
+        background: "hsl(0, 0%, 98%)",
+      }}
+      container
+    >
+      <Grid
+        sx={{ width: "100%" }}
+        item
+        display="flex"
+        flexWrap={"wrap"}
+        justifyContent={"space-between"}
+        gap={"25px"}
+      >
         <SearchInput />
-        <Button
-          variant="contained"
-          sx={{
-            textTransform: "none",
-            backgroundColor: "white",
-            color: "black",
-            "&:hover": {
-              border: "none",
-              background: "none",
-            },
-          }}
-          endIcon={<KeyboardArrowDownIcon sx={{ marginLeft: "10px" }} />}
-        >
-          Filter By Region
-        </Button>
+        <FilterMenu />
       </Grid>
     </Grid>
   );

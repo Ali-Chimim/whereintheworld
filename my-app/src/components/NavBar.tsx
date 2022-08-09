@@ -8,13 +8,22 @@ import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 
 const NavBar = () => {
   return (
-    <Box sx={{ flexGrow: 1, width: "100vw", margin: 0 }}>
-      <AppBar
-        color="transparent"
-        position="static"
-        sx={{ padding: "0px 15px" }}
-      >
-        <Toolbar>
+    <Box
+      sx={{
+        flexGrow: 1,
+        width: "100vw",
+        margin: 0,
+
+        zIndex: 10,
+      }}
+    >
+      <AppBar color={"transparent"} position="static">
+        <Toolbar
+          sx={{
+            boxShadow: " 0 0 15px rgb(0 0 0 /0.1);",
+            padding: { xs: "0px 20px", md: "0px 50px" },
+          }}
+        >
           <Typography
             variant="h6"
             component="div"
