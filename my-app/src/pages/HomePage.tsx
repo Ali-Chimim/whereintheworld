@@ -14,7 +14,7 @@ const HomePage = () => {
       container
     >
       <Grid
-        sx={{ width: "100%" }}
+        sx={{ width: "100%", marginBottom: "30px" }}
         item
         display="flex"
         flexWrap={"wrap"}
@@ -24,6 +24,7 @@ const HomePage = () => {
         <SearchInput />
         <FilterMenu />
       </Grid>
+      {/* Container of the cards */}
     </Grid>
   );
 };

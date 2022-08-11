@@ -5,9 +5,14 @@ import { useState } from "react";
 const REGIONS = ["Africa", "America", "Asie", "Europe", "Oceania"];
 const FilterMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [filterMenuText, setFilterMenuText] = useState("Filter by Region");
   const openMenu = Boolean(anchorEl);
   const handleClick = (e: any) => {
     setAnchorEl(e.currentTarget);
+  };
+  const handleRegionClick = (region: string) => {
+    setFilterMenuText(region);
+    setAnchorEl(null);
   };
   return (
     <Box>
@@ -20,7 +25,7 @@ const FilterMenu = () => {
         onClick={handleClick}
         sx={{
           padding: "10px",
-          width: "max-content",
+          width: "150px",
           whiteSpace: "nowrap",
           textTransform: "none",
           backgroundColor: "white",
@@ -33,7 +38,7 @@ const FilterMenu = () => {
         }}
         endIcon={<KeyboardArrowDownIcon sx={{ marginLeft: "10px" }} />}
       >
-        Filter by Region
+        {filterMenuText}
       </Button>
       <Menu
         id="demo-positioned-menu"
@@ -52,7 +57,7 @@ const FilterMenu = () => {
         }}
       >
         {REGIONS.map((region) => (
-          <MenuItem onClick={() => setAnchorEl(null)}>
+          <MenuItem onClick={() => handleRegionClick(region)}>
             <Typography sx={{ fontSize: "14px" }}>{region}</Typography>
           </MenuItem>
         ))}
