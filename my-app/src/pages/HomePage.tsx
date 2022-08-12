@@ -3,14 +3,18 @@ import FilterMenu from "../components/FilterMenu";
 import SearchInput from "../components/SearchInput";
 import MoroccanFlag from "../assets/images/Flag_of_Morocco.svg.png";
 import api from "../services/API";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Country } from "../domain/Country";
+import { CountryAssembler } from "../services/CountryAssembler";
 
 const HomePage = () => {
+  const [countries, setCountries] = useState<Country[]>();
   useEffect(() => {
     const getAllCountries = async () => {
       try {
         const response = await api.get("/all");
-        console.log(response.data);
+
+        setCountries(response.data.map(CountryAssembler.assemble));
       } catch (error) {
         console.log("my error", error);
       }
