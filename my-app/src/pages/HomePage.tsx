@@ -2,8 +2,21 @@ import { Card, CardContent, Grid, Typography } from "@mui/material";
 import FilterMenu from "../components/FilterMenu";
 import SearchInput from "../components/SearchInput";
 import MoroccanFlag from "../assets/images/Flag_of_Morocco.svg.png";
+import api from "../services/API";
+import { useEffect } from "react";
 
 const HomePage = () => {
+  useEffect(() => {
+    const getAllCountries = async () => {
+      try {
+        const response = await api.get("/all");
+        console.log(response.data);
+      } catch (error) {
+        console.log("my error", error);
+      }
+    };
+    getAllCountries();
+  }, []);
   return (
     <Grid
       sx={{
