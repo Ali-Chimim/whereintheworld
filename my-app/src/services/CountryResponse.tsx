@@ -1,4 +1,5 @@
 export interface CountryResponse {
+  flags: any;
   borders: string[];
   capital: string[];
   name: any;

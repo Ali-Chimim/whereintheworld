@@ -1,4 +1,5 @@
 export class Country {
+  flags: any;
   borders: string[];
   capital: string[];
   name: any;
@@ -10,6 +11,7 @@ export class Country {
   languages: any;
 
   constructor(
+    flags: any,
     borders: string[],
     capital: string[],
     name: any,
@@ -20,6 +22,7 @@ export class Country {
     currencies: any,
     languages: any
   ) {
+    this.flags = flags;
     this.borders = borders;
     this.capital = capital;
     this.name = name;

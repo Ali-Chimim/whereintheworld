@@ -2,7 +2,7 @@ import { Box, Button, Menu, MenuItem, Typography } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useState } from "react";
 
-const REGIONS = ["Africa", "America", "Asie", "Europe", "Oceania"];
+const REGIONS = ["Africa", "Americas", "Asie", "Europe", "Oceania"];
 const FilterMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [filterMenuText, setFilterMenuText] = useState("Filter by Region");
@@ -24,8 +24,8 @@ const FilterMenu = () => {
         aria-expanded={openMenu ? "true" : undefined}
         onClick={handleClick}
         sx={{
-          padding: "10px",
-          width: "150px",
+          padding: "12px",
+          width: "170px",
           whiteSpace: "nowrap",
           textTransform: "none",
           backgroundColor: "white",
@@ -36,7 +36,7 @@ const FilterMenu = () => {
             background: "none",
           },
         }}
-        endIcon={<KeyboardArrowDownIcon sx={{ marginLeft: "10px" }} />}
+        endIcon={<KeyboardArrowDownIcon sx={{ marginLeft: "20px" }} />}
       >
         {filterMenuText}
       </Button>
@@ -52,7 +52,7 @@ const FilterMenu = () => {
         }}
         PaperProps={{
           style: {
-            width: "151px",
+            width: "170px",
           },
         }}
       >

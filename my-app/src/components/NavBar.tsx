@@ -11,9 +11,7 @@ const NavBar = () => {
     <Box
       sx={{
         flexGrow: 1,
-        width: "100vw",
         margin: 0,
-
         zIndex: 10,
       }}
     >
@@ -21,7 +19,7 @@ const NavBar = () => {
         <Toolbar
           sx={{
             boxShadow: " 0 0 15px rgb(0 0 0 /0.1);",
-            padding: { xs: "0px 20px", md: "0px 50px" },
+            padding: { xs: "0px 43px", md: "0px 53px" },
           }}
         >
           <Typography

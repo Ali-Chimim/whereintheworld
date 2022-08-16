@@ -4,6 +4,7 @@ import { CountryResponse } from "./CountryResponse";
 export class CountryAssembler {
   public static assemble(response: CountryResponse) {
     return new Country(
+      response.flags,
       response.borders,
       response.capital,
       response.name,

@@ -1,11 +1,11 @@
-import { Card, CardContent, Grid, Typography } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import FilterMenu from "../components/FilterMenu";
 import SearchInput from "../components/SearchInput";
-import MoroccanFlag from "../assets/images/Flag_of_Morocco.svg.png";
 import api from "../services/API";
 import { useEffect, useState } from "react";
 import { Country } from "../domain/Country";
 import { CountryAssembler } from "../services/CountryAssembler";
+import CountryCard from "../components/CountryCard";
 
 const HomePage = () => {
   const [countries, setCountries] = useState<Country[]>();
@@ -21,80 +21,51 @@ const HomePage = () => {
     };
     getAllCountries();
   }, []);
+
   return (
-    <Grid
+    <Box
       sx={{
-        width: "100vw",
-        padding: { xs: "20px", md: "50px" },
-        margin: 0,
+        flexGrow: 1,
+        padding: { xs: "20px", md: "30px" },
         background: "hsl(0, 0%, 98%)",
       }}
-      container
+      display={"flex"}
+      flexDirection={"column"}
+      justifyContent={"center"}
+      alignItems={"center"}
     >
       <Grid
-        sx={{ width: "100%", marginBottom: "30px" }}
-        item
-        display="flex"
-        flexWrap={"wrap"}
-        justifyContent={"space-between"}
-        gap={"25px"}
+        sx={{ marginBottom: "30px", padding: "0 23px", width: "100%" }}
+        xs={12}
+        container
+        alignItems={"center"}
       >
-        <SearchInput />
-        <FilterMenu />
-      </Grid>
-      <Card
-        variant="outlined"
-        sx={{
-          width: "240px",
-          borderRadius: "5px",
-          boxShadow: " 0 0 15px rgb(0 0 0 /0.15);",
-          border: 0,
-          cursor: "pointer",
-          transition: "transform 250ms",
-          "&:hover": { transform: "translateY(-10px)" },
-        }}
-      >
-        <CardContent
+        <Grid item xs={12} sm={6}>
+          <SearchInput />
+        </Grid>
+        <Grid item sm={4} />
+        <Grid
+          item
+          xs={6}
+          sm={2}
           sx={{
             display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            padding: 0,
+            justifyContent: { xs: "", sm: "flex-end" },
+            marginTop: { xs: "20px", sm: "0" },
           }}
         >
-          <img
-            src={MoroccanFlag}
-            style={{
-              width: "100%",
-              borderRadius: "5px 5px 0px 0px ",
-              marginBottom: "20px",
-            }}
-            alt="flag"
-          />
-          <Typography
-            style={{
-              fontWeight: 700,
-              marginBottom: "10px",
-              fontSize: "14px",
-            }}
-          >
-            Morocco
-          </Typography>
-          <Typography
-            variant="caption"
-            style={{
-              color: "grey",
-              marginBottom: "5px",
-            }}
-          >
-            Scan the QR code to visit Frontend Mentor and take your coding
-            skills to the next level
-          </Typography>
-        </CardContent>
-      </Card>
+          <FilterMenu />
+        </Grid>
+      </Grid>
 
-      {/* Container of the cards */}
-    </Grid>
+      <Grid container spacing={6} xs={12}>
+        {countries?.map((country, idx) => (
+          <Grid item xs={12} md={3}>
+            <CountryCard key={idx} country={country} />
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
   );
 };
 export default HomePage;
