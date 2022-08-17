@@ -2,8 +2,12 @@ import { Box, Button, Menu, MenuItem, Typography } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useState } from "react";
 
-const REGIONS = ["Africa", "Americas", "Asie", "Europe", "Oceania"];
-const FilterMenu = () => {
+interface IFilterMenu {
+  handleRegionChange: (region: string) => void;
+}
+
+const REGIONS = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
+const FilterMenu = (props: IFilterMenu) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [filterMenuText, setFilterMenuText] = useState("Filter by Region");
   const openMenu = Boolean(anchorEl);
@@ -13,6 +17,7 @@ const FilterMenu = () => {
   const handleRegionClick = (region: string) => {
     setFilterMenuText(region);
     setAnchorEl(null);
+    props.handleRegionChange(region);
   };
   return (
     <Box>
