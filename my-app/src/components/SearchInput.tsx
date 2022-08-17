@@ -3,14 +3,19 @@ import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
+import { debounce } from "lodash";
 
 interface ISearchInputProps {
   handleSearchInputChange: (input: string) => void;
 }
 const SearchInput = (props: ISearchInputProps) => {
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    props.handleSearchInputChange(event.target.value);
-  };
+  const handleInputChange = debounce(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      props.handleSearchInputChange(event.target.value);
+    },
+    1000
+  );
+
   return (
     <Paper
       component="form"

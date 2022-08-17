@@ -28,8 +28,8 @@ const HomePage = () => {
       setCountries(defaultCountries);
       return;
     }
-    const filteredCountries = countries?.filter((country) =>
-      country.name.common.includes(input)
+    const filteredCountries = defaultCountries?.filter((country) =>
+      country.name.common.toLowerCase().includes(input.toLowerCase())
     );
     setCountries(filteredCountries);
   };
