@@ -56,8 +56,8 @@ const FilterMenu = () => {
           },
         }}
       >
-        {REGIONS.map((region) => (
-          <MenuItem onClick={() => handleRegionClick(region)}>
+        {REGIONS.map((region, idx) => (
+          <MenuItem key={idx} onClick={() => handleRegionClick(region)}>
             <Typography sx={{ fontSize: "14px" }}>{region}</Typography>
           </MenuItem>
         ))}

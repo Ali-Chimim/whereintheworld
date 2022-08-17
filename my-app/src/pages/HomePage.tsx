@@ -9,12 +9,13 @@ import CountryCard from "../components/CountryCard";
 
 const HomePage = () => {
   const [countries, setCountries] = useState<Country[]>();
+  const [defaultCountries, setDefaultCountries] = useState<Country[]>();
   useEffect(() => {
     const getAllCountries = async () => {
       try {
         const response = await api.get("/all");
-
         setCountries(response.data.map(CountryAssembler.assemble));
+        setDefaultCountries(response.data.map(CountryAssembler.assemble));
       } catch (error) {
         console.log("my error", error);
       }
@@ -22,6 +23,16 @@ const HomePage = () => {
     getAllCountries();
   }, []);
 
+  const handleSearchInputChange = (input: string) => {
+    if (input === "") {
+      setCountries(defaultCountries);
+      return;
+    }
+    const filteredCountries = countries?.filter((country) =>
+      country.name.common.includes(input)
+    );
+    setCountries(filteredCountries);
+  };
   return (
     <Box
       sx={{
@@ -35,13 +46,12 @@ const HomePage = () => {
       alignItems={"center"}
     >
       <Grid
-        sx={{ marginBottom: "30px", padding: "0 23px", width: "100%" }}
-        xs={12}
+        sx={{ marginBottom: "30px", padding: "0 23px" }}
         container
         alignItems={"center"}
       >
         <Grid item xs={12} sm={6}>
-          <SearchInput />
+          <SearchInput handleSearchInputChange={handleSearchInputChange} />
         </Grid>
         <Grid item sm={4} />
         <Grid
@@ -60,8 +70,8 @@ const HomePage = () => {
 
       <Grid container spacing={6} xs={12}>
         {countries?.map((country, idx) => (
-          <Grid item xs={12} md={3}>
-            <CountryCard key={idx} country={country} />
+          <Grid key={idx} item xs={12} md={3}>
+            <CountryCard country={country} />
           </Grid>
         ))}
       </Grid>

@@ -4,7 +4,13 @@ import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 
-const SearchInput = () => {
+interface ISearchInputProps {
+  handleSearchInputChange: (input: string) => void;
+}
+const SearchInput = (props: ISearchInputProps) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    props.handleSearchInputChange(event.target.value);
+  };
   return (
     <Paper
       component="form"
@@ -29,6 +35,7 @@ const SearchInput = () => {
         }}
         placeholder="Search for a country..."
         inputProps={{ "aria-label": "search google maps" }}
+        onChange={handleInputChange}
       />
     </Paper>
   );

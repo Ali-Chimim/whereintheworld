@@ -1,8 +1,10 @@
+import { name } from "../services/CountryResponse";
+
 export class Country {
   flags: any;
   borders: string[];
   capital: string[];
-  name: any;
+  name: name;
   population: number;
   region: string;
   subRegion: string;
@@ -14,7 +16,7 @@ export class Country {
     flags: any,
     borders: string[],
     capital: string[],
-    name: any,
+    name: name,
     population: number,
     region: string,
     subRegion: string,
