@@ -4,12 +4,15 @@ import { Country } from "../domain/Country";
 interface ICountryCardProps {
   country?: Country;
   isLoading?: boolean;
+  isDark?: boolean;
 }
+
 const CountryCard = (props: ICountryCardProps) => {
   return (
     <Card
       variant="outlined"
       sx={{
+        backgroundColor: props.isDark ? "hsl(209, 23%, 22%)" : "",
         borderRadius: "5px",
         height: "320px",
         boxShadow: " 0 0 15px rgb(0 0 0 /0.15);",
@@ -48,6 +51,7 @@ const CountryCard = (props: ICountryCardProps) => {
                 fontWeight: 700,
                 marginBottom: "10px",
                 fontSize: "16px",
+                color: props.isDark ? "white" : " hsl(200, 15%, 8%)",
               }}
             >
               {props.country?.name.common}
@@ -59,6 +63,7 @@ const CountryCard = (props: ICountryCardProps) => {
                   fontSize: "14px",
                   fontWeight: "bold",
                   marginBottom: "5px",
+                  color: props.isDark ? "white" : " hsl(200, 15%, 8%)",
                 }}
               >
                 Population:
@@ -68,6 +73,7 @@ const CountryCard = (props: ICountryCardProps) => {
                   fontSize: "14px",
                   marginBottom: "5px",
                   marginLeft: "2px",
+                  color: props.isDark ? "white" : " hsl(200, 15%, 8%)",
                 }}
               >
                 {props.country?.population}
@@ -79,6 +85,7 @@ const CountryCard = (props: ICountryCardProps) => {
                   fontSize: "14px",
                   fontWeight: "bold",
                   marginBottom: "5px",
+                  color: props.isDark ? "white" : " hsl(200, 15%, 8%)",
                 }}
               >
                 Region:
@@ -88,6 +95,7 @@ const CountryCard = (props: ICountryCardProps) => {
                   fontSize: "14px",
                   marginBottom: "5px",
                   marginLeft: "2px",
+                  color: props.isDark ? "white" : " hsl(200, 15%, 8%)",
                 }}
               >
                 {props.country?.region}
@@ -99,6 +107,7 @@ const CountryCard = (props: ICountryCardProps) => {
                   fontSize: "14px",
                   fontWeight: "bold",
                   marginBottom: "5px",
+                  color: props.isDark ? "white" : " hsl(200, 15%, 8%)",
                 }}
               >
                 Capital:
@@ -108,6 +117,7 @@ const CountryCard = (props: ICountryCardProps) => {
                   fontSize: "14px",
                   marginBottom: "5px",
                   marginLeft: "2px",
+                  color: props.isDark ? "white" : " hsl(200, 15%, 8%)",
                 }}
               >
                 {props.country?.capital ? props.country?.capital[0] : undefined}

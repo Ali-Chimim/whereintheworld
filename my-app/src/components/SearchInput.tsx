@@ -4,11 +4,14 @@ import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import { debounce } from "lodash";
+import { ThemeContext } from "../context/ThemeContext";
+import { useContext } from "react";
 
 interface ISearchInputProps {
   handleSearchInputChange: (input: string) => void;
 }
 const SearchInput = (props: ISearchInputProps) => {
+  const { isDark } = useContext(ThemeContext);
   const handleInputChange = debounce(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       props.handleSearchInputChange(event.target.value);
@@ -25,16 +28,18 @@ const SearchInput = (props: ISearchInputProps) => {
         alignItems: "center",
         width: { xs: "100%", md: "400px" },
         boxShadow: " 0 0 15px rgb(0 0 0 /0.1);",
+        backgroundColor: isDark ? "hsl(209, 23%, 22%)" : "white",
       }}
     >
       <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
-        <SearchIcon />
+        <SearchIcon sx={{ color: isDark ? "white" : "" }} />
       </IconButton>
       <InputBase
         sx={{
+          color: isDark ? "white" : " hsl(200, 15%, 8%)",
           input: {
             "&::placeholder": {
-              color: "black",
+              color: isDark ? "white" : " hsl(200, 15%, 8%)",
             },
           },
         }}

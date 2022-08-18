@@ -2,10 +2,11 @@ import { Box, Grid } from "@mui/material";
 import FilterMenu from "../components/FilterMenu";
 import SearchInput from "../components/SearchInput";
 import api from "../services/API";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Country } from "../domain/Country";
 import { CountryAssembler } from "../services/CountryAssembler";
 import CountryCard from "../components/CountryCard";
+import { ThemeContext } from "../context/ThemeContext";
 
 const HomePage = () => {
   const [countries, setCountries] = useState<Country[]>();
@@ -13,6 +14,8 @@ const HomePage = () => {
   const [region, setRegion] = useState<string>("");
   const [searchInput, setSearchInput] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  const { isDark } = useContext(ThemeContext);
   useEffect(() => {
     const getAllCountries = async () => {
       try {
@@ -70,7 +73,7 @@ const HomePage = () => {
       sx={{
         flexGrow: 1,
         padding: { xs: "20px", md: "30px" },
-        background: "hsl(0, 0%, 98%)",
+        background: isDark ? "hsl(207, 26%, 17%)" : "hsl(0, 0%, 98%)",
       }}
       display={"flex"}
       flexDirection={"column"}
@@ -103,17 +106,17 @@ const HomePage = () => {
       <Grid container spacing={6} xs={12}>
         {isLoading ? (
           <>
-            {Array.from(new Array(8)).map((element) => (
+            {Array.from(new Array(8)).map((_, idx) => (
               <Grid item xs={12} md={3}>
-                <CountryCard isLoading />
+                <CountryCard key={idx} isLoading />
               </Grid>
             ))}
           </>
         ) : (
           <>
             {countries?.map((country, idx) => (
-              <Grid key={idx} item xs={12} md={3}>
-                <CountryCard country={country} />
+              <Grid key={idx} item xs={12} sm={6} md={4} lg={3}>
+                <CountryCard country={country} isDark={isDark} />
               </Grid>
             ))}
           </>

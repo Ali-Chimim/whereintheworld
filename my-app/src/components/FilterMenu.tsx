@@ -1,6 +1,7 @@
 import { Box, Button, Menu, MenuItem, Typography } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ThemeContext } from "../context/ThemeContext";
 
 interface IFilterMenu {
   handleRegionChange: (region: string) => void;
@@ -11,6 +12,7 @@ const FilterMenu = (props: IFilterMenu) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [filterMenuText, setFilterMenuText] = useState("Filter by Region");
   const openMenu = Boolean(anchorEl);
+  const { isDark } = useContext(ThemeContext);
   const handleClick = (e: any) => {
     setAnchorEl(e.currentTarget);
   };
@@ -33,8 +35,8 @@ const FilterMenu = (props: IFilterMenu) => {
           width: "170px",
           whiteSpace: "nowrap",
           textTransform: "none",
-          backgroundColor: "white",
-          color: "black",
+          backgroundColor: isDark ? "hsl(209, 23%, 22%)" : "white",
+          color: isDark ? "white" : "hsl(200, 15%, 8%)",
           boxShadow: " 0 0 15px rgb(0 0 0 /0.1);",
           "&:hover": {
             border: "none",
@@ -58,6 +60,8 @@ const FilterMenu = (props: IFilterMenu) => {
         PaperProps={{
           style: {
             width: "170px",
+            backgroundColor: isDark ? "hsl(209, 23%, 22%)" : "white",
+            color: isDark ? "white" : "hsl(200, 15%, 8%)",
           },
         }}
       >
