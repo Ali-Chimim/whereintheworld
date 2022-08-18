@@ -34,7 +34,11 @@ const NavBar = () => {
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, fontWeight: 700 }}
+            sx={{
+              flexGrow: 1,
+              fontWeight: 700,
+              fontSize: { xs: "16px", md: "20px" },
+            }}
           >
             Where in the world ?
           </Typography>
