@@ -1,4 +1,4 @@
-import { Box, Grid, Skeleton } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import FilterMenu from "../components/FilterMenu";
 import SearchInput from "../components/SearchInput";
 import api from "../services/API";

@@ -5,8 +5,12 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import { ThemeContext } from "../context/ThemeContext";
+import { useContext } from "react";
 
 const NavBar = () => {
+  const { isDark, switchTheme } = useContext(ThemeContext);
+
   return (
     <Box
       sx={{
@@ -15,9 +19,13 @@ const NavBar = () => {
         zIndex: 10,
       }}
     >
-      <AppBar color={"transparent"} position="static">
+      <AppBar
+        sx={{ backgroundColor: isDark ? "hsl(209, 23%, 22%)" : "white" }}
+        position="static"
+      >
         <Toolbar
           sx={{
+            color: isDark ? "white" : "black",
             boxShadow: " 0 0 15px rgb(0 0 0 /0.1);",
             padding: { xs: "0px 43px", md: "0px 53px" },
           }}
@@ -29,19 +37,19 @@ const NavBar = () => {
           >
             Where in the world ?
           </Typography>
-          <IconButton>
+          <IconButton onClick={switchTheme}>
             <DarkModeOutlinedIcon
               sx={{
                 marginRight: "5px",
                 width: "17px",
                 height: "17px",
-                color: "black",
+                color: isDark ? "white" : "black",
               }}
             />
             <Typography
               variant="subtitle2"
               component="div"
-              sx={{ flexGrow: 1, color: "black" }}
+              sx={{ flexGrow: 1, color: isDark ? "white" : "black" }}
             >
               Dark Mode
             </Typography>
